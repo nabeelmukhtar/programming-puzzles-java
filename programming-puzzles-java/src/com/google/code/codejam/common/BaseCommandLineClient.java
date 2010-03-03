@@ -27,7 +27,7 @@ public abstract class BaseCommandLineClient {
 				reader = new BufferedReader(new FileReader(args[0]));
 		    	String line = null;
 		    	int lineNumber = 0;
-	        	while((line = reader.readLine()) !=null) {
+	        	while((line = reader.readLine()) != null) {
 	        		String[] tokens = line.split(delimiter);
 	        		processTokens(++lineNumber, tokens);
 	        	}
