@@ -43,7 +43,7 @@ public abstract class BaseCommandLineClient {
 	 *
 	 */
 	protected void printHelp() {
-		System.err.println("The syntax to use this command line application is:");
+		System.err.println("The syntax to run this command line application is:");
 		System.err.println("java " + getClass().getName() + " <inputfilename>");
 	}
 	
