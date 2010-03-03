@@ -13,7 +13,7 @@ import java.io.Reader;
  *
  */
 public abstract class BaseCommandLineClient {
-	protected String delimiter = "";
+	protected String delimiter = "\\s";
 
 	/**
 	 * @param args
