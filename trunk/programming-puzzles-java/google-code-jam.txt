@@ -1,0 +1,12 @@
+Google Code Jam.
+http://code.google.com/codejam
+C:\Documents and Settings\nmukhtar\My Documents\My eBooks\puzzles\acm-icpc
+http://www.topcoder.com/tc?module=ProblemArchive
+
+Write utility classes to parse input and write output.
+Create a eclipse project.
+Try to solve sample problems.
+	start with code jam
+	then icpc
+	then facebook
+	then topcoder
