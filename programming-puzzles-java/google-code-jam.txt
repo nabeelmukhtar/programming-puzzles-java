@@ -5,6 +5,7 @@ http://www.topcoder.com/tc?module=ProblemArchive
 
 Write utility classes to parse input and write output.
 Create a eclipse project.
+Revise the regular expressions.
 Try to solve sample problems.
 	start with code jam
 	then icpc
