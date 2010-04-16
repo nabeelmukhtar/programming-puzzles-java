@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.List;
 
 /**
  * @author nmukhtar
@@ -86,6 +87,20 @@ public abstract class BaseCommandLineClient {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 */
+	protected String join(List<String> strings, String joiner) {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < strings.size(); i++) {
+			builder.append(strings.get(i));
+			if (i != strings.size() - 1) {
+				builder.append(joiner);
+			}
+		}
+		return builder.toString();
 	}
 
 	/**
