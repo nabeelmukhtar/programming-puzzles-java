@@ -3,6 +3,9 @@
  */
 package com.google.code.codejam._2008.onlineround2.starwars;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+
 import com.google.code.codejam.common.BaseCommandLineClient;
 
 /**
@@ -12,11 +15,9 @@ import com.google.code.codejam.common.BaseCommandLineClient;
 public class StarWars extends BaseCommandLineClient {
 
 	/**
-	 * @param lineNumber
-	 * @param lineTokens
 	 */
 	@Override
-	public void processTokens(int lineNumber, String[] lineTokens) {
+	public void process(BufferedReader input, PrintWriter output) throws Exception {
 		// TODO Auto-generated method stub
 	}
 

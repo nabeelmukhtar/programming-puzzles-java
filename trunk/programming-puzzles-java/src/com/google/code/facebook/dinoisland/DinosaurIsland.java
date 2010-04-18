@@ -3,6 +3,9 @@
  */
 package com.google.code.facebook.dinoisland;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+
 import com.google.code.codejam.common.BaseCommandLineClient;
 
 /**
@@ -12,11 +15,9 @@ import com.google.code.codejam.common.BaseCommandLineClient;
 public class DinosaurIsland extends BaseCommandLineClient {
 
 	/**
-	 * @param lineNumber
-	 * @param lineTokens
 	 */
 	@Override
-	public void processTokens(int lineNumber, String[] lineTokens) {
+	public void process(BufferedReader input, PrintWriter output) throws Exception {
 		// TODO Auto-generated method stub
 	}
 

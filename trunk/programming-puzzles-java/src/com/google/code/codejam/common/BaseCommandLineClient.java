@@ -30,14 +30,13 @@ public abstract class BaseCommandLineClient {
 			BufferedReader reader = null;
 			try {
 				reader = new BufferedReader(new FileReader(args[0]));
-				writer = new PrintWriter(new FileWriter(args[1]));
-				String line = null;
-				int lineNumber = 0;
-				while ((line = reader.readLine()) != null) {
-					String[] tokens = line.split(delimiter);
-					processTokens(++lineNumber, tokens);
+				if (args.length > 1) {
+					writer = new PrintWriter(new FileWriter(args[1]));
+					process(reader, writer);
+				} else {
+					process(reader, new PrintWriter(System.out));
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				closeReader(reader);
@@ -50,17 +49,22 @@ public abstract class BaseCommandLineClient {
 	 * 
 	 */
 	protected void printHelp() {
-		System.err
+		System.out
 				.println("The syntax to run this command line application is:");
-		System.err.println("java " + getClass().getName()
-				+ " <inputfilename> <outputfilename>");
+		System.out.println("java " + getClass().getName()
+				+ " <inputfilename> [<outputfilename>]");
+		System.out.println("If you do not specify an output file name, output will be printed on the console.");
 	}
 
 	/**
 	 * 
 	 */
 	protected void printLine(String line) {
-		writer.println(line);
+		if (writer != null) {
+			writer.println(line);
+		} else {
+			System.out.println(line);
+		}
 	}
 
 	/**
@@ -104,7 +108,10 @@ public abstract class BaseCommandLineClient {
 	}
 
 	/**
+	 * @param input TODO
+	 * @param output TODO
+	 * @throws Exception TODO
 	 * 
 	 */
-	public abstract void processTokens(int lineNumber, String[] lineTokens);
+	public abstract void process(BufferedReader input, PrintWriter output) throws Exception;
 }

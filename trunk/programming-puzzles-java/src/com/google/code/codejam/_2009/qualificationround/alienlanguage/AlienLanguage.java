@@ -3,6 +3,8 @@
  */
 package com.google.code.codejam._2009.qualificationround.alienlanguage;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -14,31 +16,34 @@ import com.google.code.codejam.common.BaseCommandLineClient;
  *
  */
 public class AlienLanguage extends BaseCommandLineClient {
-	private int numberOfTokens = 0;
-	private int numberOfWords = 0;
-	private int numberOfSamples = 0;
 	private List<String> dictionary = new ArrayList<String>();
 
 	/**
-	 * @param lineNumber
-	 * @param lineTokens
 	 */
 	@Override
-	public void processTokens(int lineNumber, String[] lineTokens) {
-		if (lineNumber == 1) {
-			numberOfTokens = Integer.parseInt(lineTokens[0]);
-			numberOfWords = Integer.parseInt(lineTokens[1]);
-			numberOfSamples = Integer.parseInt(lineTokens[2]);
-		} else if (dictionary.size() < numberOfWords) {
-			dictionary.add(lineTokens[0]);
-		} else {
-			int matchCount = 0;
-			for (String word : dictionary) {
-				if (Pattern.matches(convertToRegex(lineTokens[0]), word)) {
-					matchCount ++;
+	public void process(BufferedReader input, PrintWriter output) throws Exception {
+		String line = null;
+		int lineNumber = 0;
+		int numberOfTokens = 0;
+		int numberOfWords = 0;
+		int numberOfSamples = 0;
+		while ((line = input.readLine()) != null) {
+			String[] lineTokens = line.split(delimiter);
+			if (lineNumber == 1) {
+				numberOfTokens = Integer.parseInt(lineTokens[0]);
+				numberOfWords = Integer.parseInt(lineTokens[1]);
+				numberOfSamples = Integer.parseInt(lineTokens[2]);
+			} else if (dictionary.size() < numberOfWords) {
+				dictionary.add(lineTokens[0]);
+			} else {
+				int matchCount = 0;
+				for (String word : dictionary) {
+					if (Pattern.matches(convertToRegex(lineTokens[0]), word)) {
+						matchCount ++;
+					}
 				}
+				printLine(String.format("Case #%d: %d\n", lineNumber - numberOfWords - 1, matchCount));
 			}
-			printLine(String.format("Case #%d: %d\n", lineNumber - numberOfWords - 1, matchCount));
 		}
 	}
 
