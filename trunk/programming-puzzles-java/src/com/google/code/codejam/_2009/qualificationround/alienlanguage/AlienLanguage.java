@@ -16,7 +16,6 @@ import com.google.code.codejam.common.BaseCommandLineClient;
  *
  */
 public class AlienLanguage extends BaseCommandLineClient {
-	private List<String> dictionary = new ArrayList<String>();
 
 	/**
 	 */
@@ -27,6 +26,7 @@ public class AlienLanguage extends BaseCommandLineClient {
 		int numberOfTokens = 0;
 		int numberOfWords = 0;
 		int numberOfSamples = 0;
+		List<String> dictionary = new ArrayList<String>();
 		while ((line = input.readLine()) != null) {
 			String[] lineTokens = line.split(delimiter);
 			if (lineNumber == 1) {
