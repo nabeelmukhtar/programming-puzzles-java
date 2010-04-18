@@ -18,7 +18,6 @@ import java.util.List;
  */
 public abstract class BaseCommandLineClient {
 	protected String delimiter = "\\s";
-	protected PrintWriter writer;
 
 	/**
 	 * @param args
@@ -28,6 +27,7 @@ public abstract class BaseCommandLineClient {
 			printHelp();
 		} else {
 			BufferedReader reader = null;
+			PrintWriter writer = null;
 			try {
 				reader = new BufferedReader(new FileReader(args[0]));
 				if (args.length > 1) {
@@ -54,17 +54,6 @@ public abstract class BaseCommandLineClient {
 		System.out.println("java " + getClass().getName()
 				+ " <inputfilename> [<outputfilename>]");
 		System.out.println("If you do not specify an output file name, output will be printed on the console.");
-	}
-
-	/**
-	 * 
-	 */
-	protected void printLine(String line) {
-		if (writer != null) {
-			writer.println(line);
-		} else {
-			System.out.println(line);
-		}
 	}
 
 	/**
