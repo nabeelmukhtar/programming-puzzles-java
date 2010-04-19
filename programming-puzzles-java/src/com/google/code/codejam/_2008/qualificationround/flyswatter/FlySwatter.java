@@ -20,7 +20,7 @@ public class FlySwatter extends BaseCommandLineClient {
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
 		final int numberOfTestCases = Integer.parseInt(input.readLine());
 		for (int i = 0; i < numberOfTestCases; i++) {
-			output.println(String.format("Case #%d: %d", (i + 1), getProbability(input)));
+			output.println(String.format("Case #%d: %g", (i + 1), getProbability(input)));
 		}
 	}
 
