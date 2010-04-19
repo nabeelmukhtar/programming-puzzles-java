@@ -5,6 +5,8 @@ package com.google.code.codejam._2008.qualificationround.savingtheuniverse;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -18,7 +20,56 @@ public class SavingTheUniverse extends BaseCommandLineClient {
 	 */
 	@Override
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		// TODO Auto-generated method stub
+		final int numberOfTestCases = Integer.parseInt(input.readLine());
+		for (int i = 0; i < numberOfTestCases; i++) {
+			output.println(String.format("Case #%d: %d", i + 1, getNumberOfSwitches(input)));			
+		}
+		output.flush();
+	}
+
+	private int getNumberOfSwitches(BufferedReader input) throws Exception {
+		final int numberOfSearchEngines = Integer.parseInt(input.readLine());
+		final String[] searchEngineNames = new String[numberOfSearchEngines];
+		for (int i = 0; i < numberOfSearchEngines; i++) {
+			searchEngineNames[i] = input.readLine();
+		}
+		final int numberOfQueries = Integer.parseInt(input.readLine());
+		final String[] queries = new String[numberOfQueries];
+		for (int i = 0; i < numberOfQueries; i++) {
+			queries[i] = input.readLine();			
+		}
+		int numberOfSwitches = 0;
+		String searchEngineName = getOptimalSearchEngine(queries, searchEngineNames, 0);
+		for (int i = 0; i < numberOfQueries; i++) {
+			if (queries[i].equals(searchEngineName)) {
+				searchEngineName = getOptimalSearchEngine(queries, searchEngineNames, i);
+				numberOfSwitches++;
+			}
+			
+		}
+		return numberOfSwitches;
+	}
+
+	private String getOptimalSearchEngine(String[] queries, String[] searchEngineNames, int start) {
+		Map<String, Integer> searchEngineIndexes = new HashMap<String, Integer>();
+		for (int i = start; i < queries.length; i++) {
+			if (!searchEngineIndexes.containsKey(queries[i])) {
+				searchEngineIndexes.put(queries[i], i);
+			}
+		}
+		int score = 0;
+		String searchEngineName = null;
+		for (int i = 0; i < searchEngineNames.length; i++) {
+			if (searchEngineIndexes.containsKey(searchEngineNames[i])) {
+				if (searchEngineIndexes.get(searchEngineNames[i]) > score) {
+					searchEngineName = searchEngineNames[i];
+					score = searchEngineIndexes.get(searchEngineNames[i]);
+				}
+			} else {
+				return searchEngineNames[i];
+			}
+		}
+		return searchEngineName;
 	}
 
 	/**
