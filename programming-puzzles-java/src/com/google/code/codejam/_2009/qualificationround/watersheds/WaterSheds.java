@@ -20,7 +20,6 @@ public class WaterSheds extends BaseCommandLineClient {
 	private int widthOfMap;
 	private int counter;
 	private int[][] map;
-	private Map<Coordinate, Character> labels = new HashMap<Coordinate, Character>();
 	
 
 	/**
@@ -43,22 +42,70 @@ public class WaterSheds extends BaseCommandLineClient {
 				}
 				counter++;
 			} else {
-				printSinks();
+				printSinks(output);
 				heightOfMap = 0;
 				widthOfMap = 0;
 				map = null;
-				labels.clear();
 			}
 			lineNumber++;
 		}
 	}
 
-	private void printSinks() {
+	private void printSinks(PrintWriter output) {
+		Map<Coordinate, Character> labels = new HashMap<Coordinate, Character>();
+		
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
-				
-				
+				Coordinate sink = getSink(map, new Coordinate(i, j));
+				if (labels.containsKey(sink)) {
+					output.print(labels.get(sink));										
+				} else {
+					Character label = getNextLabel(labels);
+					labels.put(sink, label);
+					output.print(label);
+				}
+				if (j != map[i].length - 1) {
+					output.print(" ");
+				} else {
+					output.println();
+				}
 			}
+		}
+	}
+
+	private Character getNextLabel(Map<Coordinate, Character> labels) {
+		char max = 0; 
+		for (Character c : labels.values()) {
+			if (c.charValue() > max) {
+				max = c.charValue();
+			}
+		}
+		return (char) (max + 1);
+	}
+
+	private Coordinate getSink(int[][] map, Coordinate loc) {
+		int minAltitude = map[loc.getX()][loc.getY()];
+		Coordinate sink = loc;
+		if (loc.getX() - 1 >= 0 && map[loc.getX() - 1][loc.getY()] < minAltitude) {
+			minAltitude = map[loc.getX() - 1][loc.getY()];
+			sink = new Coordinate(loc.getX() - 1, loc.getY());
+		}
+		if (loc.getX() + 1 <= map.length && map[loc.getX() + 1][loc.getY()] < minAltitude) {
+			minAltitude = map[loc.getX() + 1][loc.getY()];
+			sink = new Coordinate(loc.getX() + 1, loc.getY());
+		}
+		if (loc.getY() - 1 >= 0 && map[loc.getX()][loc.getY() - 1] < minAltitude) {
+			minAltitude = map[loc.getX()][loc.getY() - 1];
+			sink = new Coordinate(loc.getX(), loc.getY() - 1);
+		}
+		if (loc.getY() + 1 <= map[loc.getX()].length && map[loc.getX()][loc.getY() + 1] < minAltitude) {
+			minAltitude = map[loc.getX()][loc.getY() + 1];
+			sink = new Coordinate(loc.getX(), loc.getY() + 1);
+		}
+		if (sink.equals(loc)) {
+			return sink;
+		} else {
+			return getSink(map, sink);
 		}
 	}
 

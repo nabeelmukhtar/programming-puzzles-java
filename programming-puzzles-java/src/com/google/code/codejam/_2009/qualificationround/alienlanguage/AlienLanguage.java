@@ -42,7 +42,7 @@ public class AlienLanguage extends BaseCommandLineClient {
 						matchCount ++;
 					}
 				}
-				output.println(String.format("Case #%d: %d\n", lineNumber - numberOfWords - 1, matchCount));
+				output.println(String.format("Case #%d: %d", lineNumber - numberOfWords - 1, matchCount));
 			}
 			lineNumber++;
 		}
