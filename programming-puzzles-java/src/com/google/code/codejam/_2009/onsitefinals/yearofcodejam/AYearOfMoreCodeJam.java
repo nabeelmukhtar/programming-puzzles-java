@@ -18,7 +18,13 @@ public class AYearOfMoreCodeJam extends BaseCommandLineClient {
 	 */
 	@Override
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		// TODO Auto-generated method stub
+		String line = null;
+		int lineNumber = 1;
+		while ((line = input.readLine()) != null) {
+			String[] lineTokens = line.split(delimiter);
+			// TODO Auto-generated method stub
+			lineNumber++;
+		}
 	}
 
 	/**
