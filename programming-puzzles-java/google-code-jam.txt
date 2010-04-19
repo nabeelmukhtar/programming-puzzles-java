@@ -2,6 +2,7 @@ Google Code Jam.
 http://code.google.com/codejam
 C:\Documents and Settings\nmukhtar\My Documents\My eBooks\puzzles\acm-icpc
 http://www.topcoder.com/tc?module=ProblemArchive
+http://www.go-hero.net/jam/09/solutions/
 
 Write utility classes to parse input and write output.
 Create a eclipse project.
@@ -11,3 +12,12 @@ Try to solve sample problems.
 	then icpc
 	then facebook
 	then topcoder
+	
+Strategy.
+		dont read lines in a while loop. instead read line, get count and use a for loop.
+		write a method for each type of line. do it first writing skeleton methods.
+		beware of overflow.
+		beware of performance.
+		use arrays instead of recursion.
+		always flush.
+		corner cases.
