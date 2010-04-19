@@ -15,17 +15,19 @@ import com.google.code.codejam.common.BaseCommandLineClient;
  *
  */
 public class WaterSheds extends BaseCommandLineClient {
-	private int numberOfMaps;
-	private int heightOfMap;
-	private int widthOfMap;
-	private int counter;
-	private int[][] map;
 	
 
 	/**
 	 */
 	@Override
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
+		int numberOfMaps = 0;
+		int heightOfMap = 0;
+		int widthOfMap = 0;
+		int counter = 0;
+		int[][] map = null;
+		int testNumber = 1;
+		
 		String line = null;
 		int lineNumber = 1;
 		while ((line = input.readLine()) != null) {
@@ -36,22 +38,28 @@ public class WaterSheds extends BaseCommandLineClient {
 				heightOfMap = Integer.parseInt(lineTokens[0]);
 				widthOfMap = Integer.parseInt(lineTokens[1]);
 				map = new int[heightOfMap][widthOfMap];
-			} else if (counter < heightOfMap) {
-				for (int i = 0; i < widthOfMap; i++) {
-					map[counter][i] = Integer.parseInt(lineTokens[i]);
-				}
-				counter++;
 			} else {
-				printSinks(output);
-				heightOfMap = 0;
-				widthOfMap = 0;
-				map = null;
+				if (counter < heightOfMap) {
+					for (int i = 0; i < widthOfMap; i++) {
+						map[counter][i] = Integer.parseInt(lineTokens[i]);
+					}
+					counter++;
+				}
+				if (counter == heightOfMap) {
+					output.println(String.format("Case #%d:", testNumber));
+					printSinks(map, output);
+					heightOfMap = 0;
+					widthOfMap = 0;
+					counter = 0;
+					testNumber++;
+					map = null;
+				}
 			}
 			lineNumber++;
 		}
 	}
 
-	private void printSinks(PrintWriter output) {
+	private void printSinks(int[][] map, PrintWriter output) {
 		Map<Coordinate, Character> labels = new HashMap<Coordinate, Character>();
 		
 		for (int i = 0; i < map.length; i++) {
@@ -71,16 +79,21 @@ public class WaterSheds extends BaseCommandLineClient {
 				}
 			}
 		}
+		output.flush();
 	}
 
 	private Character getNextLabel(Map<Coordinate, Character> labels) {
-		char max = 0; 
-		for (Character c : labels.values()) {
-			if (c.charValue() > max) {
-				max = c.charValue();
+		if (labels.isEmpty()) {
+			return 'a';
+		} else {
+			char max = 0; 
+			for (Character c : labels.values()) {
+				if (c.charValue() > max) {
+					max = c.charValue();
+				}
 			}
+			return (char) (max + 1);
 		}
-		return (char) (max + 1);
 	}
 
 	private Coordinate getSink(int[][] map, Coordinate loc) {
@@ -90,17 +103,17 @@ public class WaterSheds extends BaseCommandLineClient {
 			minAltitude = map[loc.getX() - 1][loc.getY()];
 			sink = new Coordinate(loc.getX() - 1, loc.getY());
 		}
-		if (loc.getX() + 1 <= map.length && map[loc.getX() + 1][loc.getY()] < minAltitude) {
-			minAltitude = map[loc.getX() + 1][loc.getY()];
-			sink = new Coordinate(loc.getX() + 1, loc.getY());
-		}
 		if (loc.getY() - 1 >= 0 && map[loc.getX()][loc.getY() - 1] < minAltitude) {
 			minAltitude = map[loc.getX()][loc.getY() - 1];
 			sink = new Coordinate(loc.getX(), loc.getY() - 1);
 		}
-		if (loc.getY() + 1 <= map[loc.getX()].length && map[loc.getX()][loc.getY() + 1] < minAltitude) {
+		if (loc.getY() + 1 < map[loc.getX()].length && map[loc.getX()][loc.getY() + 1] < minAltitude) {
 			minAltitude = map[loc.getX()][loc.getY() + 1];
 			sink = new Coordinate(loc.getX(), loc.getY() + 1);
+		}
+		if (loc.getX() + 1 < map.length && map[loc.getX() + 1][loc.getY()] < minAltitude) {
+			minAltitude = map[loc.getX() + 1][loc.getY()];
+			sink = new Coordinate(loc.getX() + 1, loc.getY());
 		}
 		if (sink.equals(loc)) {
 			return sink;
