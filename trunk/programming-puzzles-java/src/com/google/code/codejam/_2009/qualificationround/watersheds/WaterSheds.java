@@ -28,7 +28,7 @@ public class WaterSheds extends BaseCommandLineClient {
 	@Override
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
 		String line = null;
-		int lineNumber = 0;
+		int lineNumber = 1;
 		while ((line = input.readLine()) != null) {
 			String[] lineTokens = line.split(delimiter);
 			if (lineNumber == 1) {
@@ -49,6 +49,7 @@ public class WaterSheds extends BaseCommandLineClient {
 				map = null;
 				labels.clear();
 			}
+			lineNumber++;
 		}
 	}
 
