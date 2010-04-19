@@ -22,7 +22,7 @@ public class AlienLanguage extends BaseCommandLineClient {
 	@Override
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
 		String line = null;
-		int lineNumber = 0;
+		int lineNumber = 1;
 		int numberOfTokens = 0;
 		int numberOfWords = 0;
 		int numberOfSamples = 0;
@@ -44,6 +44,7 @@ public class AlienLanguage extends BaseCommandLineClient {
 				}
 				output.println(String.format("Case #%d: %d\n", lineNumber - numberOfWords - 1, matchCount));
 			}
+			lineNumber++;
 		}
 	}
 
