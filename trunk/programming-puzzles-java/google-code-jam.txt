@@ -21,3 +21,4 @@ Strategy.
 		use arrays instead of recursion.
 		always flush.
 		corner cases.
+		Use java.util.Scanner
