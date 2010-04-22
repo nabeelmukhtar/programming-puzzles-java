@@ -3,6 +3,7 @@ http://code.google.com/codejam
 C:\Documents and Settings\nmukhtar\My Documents\My eBooks\puzzles\acm-icpc
 http://www.topcoder.com/tc?module=ProblemArchive
 http://www.go-hero.net/jam/09/solutions/
+http://code.google.com/codejam/archive.html
 
 Write utility classes to parse input and write output.
 Create a eclipse project.
