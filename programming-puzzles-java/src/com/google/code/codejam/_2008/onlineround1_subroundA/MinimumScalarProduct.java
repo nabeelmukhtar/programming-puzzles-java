@@ -3,7 +3,6 @@
  */
 package com.google.code.codejam._2008.onlineround1_subroundA;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
