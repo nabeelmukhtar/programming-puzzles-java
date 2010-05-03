@@ -6,6 +6,7 @@ package com.google.code.codejam._2008.onlineround1_subroundA;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -18,23 +19,23 @@ public class MinimumScalarProduct extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		final int numberOfTestCases = Integer.parseInt(input.readLine());
+	public void process(Scanner input, PrintWriter output) throws Exception {
+		final int numberOfTestCases = Integer.parseInt(input.nextLine());
 		for (int i = 0; i < numberOfTestCases; i++) {
 			output.printf("Case #%d: %d\n", (i + 1), getMinimumScalarProduct(input));			
 		}
 		output.flush();
 	}
 
-	private long getMinimumScalarProduct(BufferedReader input) throws Exception {
-		int sizeOfVector = Integer.parseInt(input.readLine());
+	private long getMinimumScalarProduct(Scanner input) throws Exception {
+		int sizeOfVector = Integer.parseInt(input.nextLine());
 		long[] v1Coordinates = new long[sizeOfVector];
 		long[] v2Coordinates = new long[sizeOfVector];
-		String[] v1String = input.readLine().split(delimiter);
+		String[] v1String = input.nextLine().split(delimiter);
 		for (int i = 0; i < sizeOfVector; i++) {
 			v1Coordinates[i] = Long.parseLong(v1String[i]);
 		}
-		String[] v2String = input.readLine().split(delimiter);
+		String[] v2String = input.nextLine().split(delimiter);
 		for (int i = 0; i < sizeOfVector; i++) {
 			v2Coordinates[i] = Long.parseLong(v2String[i]);
 		}

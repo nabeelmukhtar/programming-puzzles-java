@@ -3,8 +3,8 @@
  */
 package com.google.code.codejam._2008.onlineround1_subroundA;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -17,7 +17,8 @@ public class Milkshakes extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
+	public void process(Scanner input, PrintWriter output) throws Exception {
+		int numberOfTestCases = input.nextInt();
 		// TODO Auto-generated method stub
 	}
 

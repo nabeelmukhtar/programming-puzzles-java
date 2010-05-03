@@ -6,7 +6,7 @@ package com.google.code.facebook.gattaca;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 
-import com.google.code.codejam.common.BaseCommandLineClient;
+import com.google.code.facebook.common.BaseCommandLineClient;
 
 /**
  * @author nmukhtar

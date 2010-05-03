@@ -3,10 +3,10 @@
  */
 package com.google.code.codejam._2009.qualificationround;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -20,7 +20,7 @@ public class WaterSheds extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
+	public void process(Scanner input, PrintWriter output) throws Exception {
 		int numberOfMaps = 0;
 		int heightOfMap = 0;
 		int widthOfMap = 0;
@@ -28,9 +28,9 @@ public class WaterSheds extends BaseCommandLineClient {
 		int[][] map = null;
 		int testNumber = 1;
 		
-		String line = null;
 		int lineNumber = 1;
-		while ((line = input.readLine()) != null) {
+		while (input.hasNextLine()) {
+			String line = input.nextLine();
 			String[] lineTokens = line.split(delimiter);
 			if (lineNumber == 1) {
 				numberOfMaps = Integer.parseInt(lineTokens[0]);

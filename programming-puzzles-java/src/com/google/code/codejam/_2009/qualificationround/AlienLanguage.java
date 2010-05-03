@@ -3,10 +3,10 @@
  */
 package com.google.code.codejam._2009.qualificationround;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
@@ -20,14 +20,14 @@ public class AlienLanguage extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		String line = null;
+	public void process(Scanner input, PrintWriter output) throws Exception {
 		int lineNumber = 1;
 		int numberOfTokens = 0;
 		int numberOfWords = 0;
 		int numberOfSamples = 0;
 		List<String> dictionary = new ArrayList<String>();
-		while ((line = input.readLine()) != null) {
+		while (input.hasNextLine()) {
+			String line = input.nextLine();
 			String[] lineTokens = line.split(delimiter);
 			if (lineNumber == 1) {
 				numberOfTokens = Integer.parseInt(lineTokens[0]);
