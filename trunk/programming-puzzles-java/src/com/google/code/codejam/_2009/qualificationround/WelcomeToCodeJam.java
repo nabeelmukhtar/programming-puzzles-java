@@ -3,8 +3,8 @@
  */
 package com.google.code.codejam._2009.qualificationround;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -18,12 +18,12 @@ public class WelcomeToCodeJam extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		String line = null;
+	public void process(Scanner input, PrintWriter output) throws Exception {
 		int lineNumber = 1;
 		int numberOfTestCases = 0;
 		int testCase = 1;
-		while ((line = input.readLine()) != null) {
+		while (input.hasNextLine()) {
+			String line = input.nextLine();
 			if (lineNumber == 1) {
 				numberOfTestCases = Integer.parseInt(line);
 			} else {

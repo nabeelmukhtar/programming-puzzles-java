@@ -3,9 +3,9 @@
  */
 package com.google.code.codejam._2008.qualificationround;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -18,32 +18,29 @@ public class TrainTimetable extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		final int numberOfTestCases = Integer.parseInt(input.readLine());
+	public void process(Scanner input, PrintWriter output) throws Exception {
+		final int numberOfTestCases = input.nextInt();
 		for (int i = 0; i < numberOfTestCases; i++) {
 			handleTestCase(i, input, output);			
 		}
 		output.flush();
 	}
 
-	private void handleTestCase(int number, BufferedReader input, PrintWriter output) throws Exception {
-		int turnaroundTime = Integer.parseInt(input.readLine());
-		String[] tokens = input.readLine().split(delimiter);
-		int tripsFromA = Integer.parseInt(tokens[0]);
+	private void handleTestCase(int number, Scanner input, PrintWriter output) throws Exception {
+		int turnaroundTime = input.nextInt();
+		int tripsFromA = input.nextInt();
 		Time[] aDepartures = new Time[tripsFromA];
 		Time[] aArrivals = new Time[tripsFromA];
-		int tripsFromB = Integer.parseInt(tokens[1]);
+		int tripsFromB = input.nextInt();
 		Time[] bDepartures = new Time[tripsFromB];
 		Time[] bArrivals = new Time[tripsFromB];
 		for (int i = 0; i < tripsFromA; i++) {
-			String[] times = input.readLine().split(delimiter);
-			aDepartures[i] = Time.parse(times[0]);
-			aArrivals[i] = Time.parse(times[1]);
+			aDepartures[i] = Time.parse(input.next());
+			aArrivals[i] = Time.parse(input.next());
 		}
 		for (int i = 0; i < tripsFromB; i++) {
-			String[] times = input.readLine().split(delimiter);
-			bDepartures[i] = Time.parse(times[0]);
-			bArrivals[i] = Time.parse(times[1]);
+			bDepartures[i] = Time.parse(input.next());
+			bArrivals[i] = Time.parse(input.next());
 		}
 		int trainsA = 0;
 		int trainsB = 0;

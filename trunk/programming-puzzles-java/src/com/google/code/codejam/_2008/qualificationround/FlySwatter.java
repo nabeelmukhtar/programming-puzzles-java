@@ -3,8 +3,8 @@
  */
 package com.google.code.codejam._2008.qualificationround;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -17,21 +17,20 @@ public class FlySwatter extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		final int numberOfTestCases = Integer.parseInt(input.readLine());
+	public void process(Scanner input, PrintWriter output) throws Exception {
+		final int numberOfTestCases = input.nextInt();
 		for (int i = 0; i < numberOfTestCases; i++) {
 			output.println(String.format("Case #%d: %g", (i + 1), getProbability(input)));
 		}
 	}
 
-	private double getProbability(BufferedReader input) throws Exception {
+	private double getProbability(Scanner input) throws Exception {
 		double probability = 0.0;
-		String[] tokens = input.readLine().split(delimiter);
-		double f = Double.parseDouble(tokens[0]);
-		double R = Double.parseDouble(tokens[1]);
-		double t = Double.parseDouble(tokens[2]);
-		double r = Double.parseDouble(tokens[3]);
-		double g = Double.parseDouble(tokens[4]);
+		double f = input.nextDouble();
+		double R = input.nextDouble();
+		double t = input.nextDouble();
+		double r = input.nextDouble();
+		double g = input.nextDouble();
 		
 		// TODO Auto-generated method stub
 		return probability;

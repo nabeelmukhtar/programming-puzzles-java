@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author nmukhtar
@@ -32,9 +33,9 @@ public abstract class BaseCommandLineClient {
 				reader = new BufferedReader(new FileReader(args[0]));
 				if (args.length > 1) {
 					writer = new PrintWriter(new FileWriter(args[1]));
-					process(reader, writer);
+					process(new Scanner(reader), writer);
 				} else {
-					process(reader, new PrintWriter(System.out));
+					process(new Scanner(reader), new PrintWriter(System.out));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -102,5 +103,5 @@ public abstract class BaseCommandLineClient {
 	 * @throws Exception TODO
 	 * 
 	 */
-	public abstract void process(BufferedReader input, PrintWriter output) throws Exception;
+	public abstract void process(Scanner input, PrintWriter output) throws Exception;
 }

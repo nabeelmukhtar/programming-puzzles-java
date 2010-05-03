@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.google.code.codejam.common.BaseCommandLineClient;
 
@@ -19,24 +20,24 @@ public class SavingTheUniverse extends BaseCommandLineClient {
 	/**
 	 */
 	@Override
-	public void process(BufferedReader input, PrintWriter output) throws Exception {
-		final int numberOfTestCases = Integer.parseInt(input.readLine());
+	public void process(Scanner input, PrintWriter output) throws Exception {
+		final int numberOfTestCases = Integer.parseInt(input.nextLine());
 		for (int i = 0; i < numberOfTestCases; i++) {
 			output.println(String.format("Case #%d: %d", i + 1, getNumberOfSwitches(input)));			
 		}
 		output.flush();
 	}
 
-	private int getNumberOfSwitches(BufferedReader input) throws Exception {
-		final int numberOfSearchEngines = Integer.parseInt(input.readLine());
+	private int getNumberOfSwitches(Scanner input) throws Exception {
+		final int numberOfSearchEngines = Integer.parseInt(input.nextLine());
 		final String[] searchEngineNames = new String[numberOfSearchEngines];
 		for (int i = 0; i < numberOfSearchEngines; i++) {
-			searchEngineNames[i] = input.readLine();
+			searchEngineNames[i] = input.nextLine();
 		}
-		final int numberOfQueries = Integer.parseInt(input.readLine());
+		final int numberOfQueries = Integer.parseInt(input.nextLine());
 		final String[] queries = new String[numberOfQueries];
 		for (int i = 0; i < numberOfQueries; i++) {
-			queries[i] = input.readLine();			
+			queries[i] = input.nextLine();			
 		}
 		int numberOfSwitches = 0;
 		String searchEngineName = getOptimalSearchEngine(queries, searchEngineNames, 0);
