@@ -5,7 +5,6 @@ package com.google.code.codejam._2008.onlineround1_subroundA;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,8 +16,6 @@ import com.google.code.codejam.common.BaseCommandLineClient;
  */
 public class Milkshakes extends BaseCommandLineClient {
 	private static final String IMPOSSIBLE = " IMPOSSIBLE";
-	private static final int MALTED = 1;
-	private static final int UNMALTED = 0;
 
 	/**
 	 */
@@ -33,66 +30,58 @@ public class Milkshakes extends BaseCommandLineClient {
 	private String prepareMilkShakes(Scanner input) {
 		int N = input.nextInt();
 		int M = input.nextInt();
-		List<Flavor> flavours = new ArrayList<Flavor>(N);
-		for (int i = 0; i < N; i++) {
-			flavours.add(new Flavor(i + 1, 0));
-		}
-		List<List<Flavor>> customerFavorites = new ArrayList<List<Flavor>>(M);
-		for (int i = 0; i < M; i++) {
-			int T = input.nextInt();
-			
-			List<Flavor> favorites = new ArrayList<Flavor>(T);
-			for (int j = 0; j < T; j++) {
-				int X = input.nextInt();
-				int Y = input.nextInt();
-				Flavor flavor = new Flavor(X, Y);
-				int index = flavours.indexOf(flavor);
-				if (index > -1) {
-					flavours.get(index).getCustomers().add(i);
-				}
-				favorites.add(flavor);				
+		
+		int[] T = new int[M];
+		int[][] X = new int[M][];
+		int[][] Y = new int[M][];
+		for ( int i = 0; i < M; i ++ ) {
+			T[i] = input.nextInt();
+			X[i] = new int[T[i]];
+			Y[i] = new int[T[i]];
+			for ( int j = 0; j < T[i]; j ++ ) {
+				X[i][j] = input.nextInt() - 1;
+				Y[i][j] = input.nextInt();
 			}
-			customerFavorites.add(favorites);
 		}
-		for (List<Flavor> favorite : customerFavorites) {
-			if (Collections.disjoint(favorite, flavours) ) {
-				boolean satisfied = false;
-				for (Flavor flavor : favorite) {
-					if (tryChangingFlavors(flavours, flavor, customerFavorites)) {
-						satisfied = true;
+		int[] r = new int[N];
+		boolean possible = true;
+		for ( int i = 0; i < N; i ++ ) {
+			for ( int j = 0; j < M; j ++ ) {
+				boolean ok = false;
+				for ( int k = 0; k < T[j]; k ++ ) {
+					if ( r[X[j][k]] == Y[j][k] ) {
+						ok = true;
 						break;
 					}
 				}
-				if (!satisfied) {
-					return IMPOSSIBLE;
+				if ( !ok ) {
+					for ( int k = 0; k < T[j]; k ++ ) {
+						if ( Y[j][k] == 1 ) {
+							ok = true;
+							r[X[j][k]] = 1;
+						}
+					}
+					if ( !ok ) {
+						possible = false;
+						break;
+					}
 				}
 			}
 		}
-		
-		return convertToString(flavours);
+		if ( !possible ) {
+			return IMPOSSIBLE;
+		} else {
+			return convertToString(r);
+		}
 	}
 
-	private String convertToString(List<Flavor> flavours) {
+	private String convertToString(int[] r) {
 		StringBuilder builder = new StringBuilder();
-		for (Flavor flavor : flavours) {
+		for (int i = 0; i < r.length; i++) {
 			builder.append(" ");
-			builder.append(flavor.getMalted());
+			builder.append(r[i]);
 		}
 		return builder.toString();
-	}
-
-	private boolean tryChangingFlavors(List<Flavor> flavours, Flavor flavor, List<List<Flavor>> customerFavorites) {
-		Flavor oldFlavour = flavours.get(flavor.getFlavour() - 1);
-		flavours.set(flavor.getFlavour() - 1, flavor);
-		List<Integer> fans = oldFlavour.getCustomers();
-		for (int fan : fans) {
-			if (Collections.disjoint(customerFavorites.get(fan), flavours) ) {			
-				flavours.set(flavor.getFlavour() - 1, oldFlavour);
-				return false;
-			}
-		}
-		
-		return true;
 	}
 
 	/**
