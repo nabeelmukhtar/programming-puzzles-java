@@ -35,7 +35,7 @@ public abstract class BaseCommandLineClient {
 					writer = new PrintWriter(new FileWriter(args[1]));
 					process(new Scanner(reader), writer);
 				} else {
-					process(new Scanner(reader), new PrintWriter(System.out));
+					process(new Scanner(reader), new PrintWriter(System.out, true));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
