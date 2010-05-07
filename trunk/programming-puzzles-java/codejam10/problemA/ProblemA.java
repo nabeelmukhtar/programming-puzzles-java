@@ -17,7 +17,20 @@ import java.util.Scanner;
  */
 public class ProblemA {
 	protected String delimiter = "\\s";
-
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+    	try {
+            new ProblemA().run(args);
+            System.exit(0);
+    	} catch (Throwable t) {
+    		t.printStackTrace();
+    		System.exit(1);
+    	}
+	}
+	
 	/**
 	 * @param args
 	 */
