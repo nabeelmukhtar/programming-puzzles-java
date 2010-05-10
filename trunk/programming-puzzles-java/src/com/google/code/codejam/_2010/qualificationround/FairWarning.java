@@ -1,3 +1,4 @@
+package com.google.code.codejam._2010.qualificationround;
 /**
  * 
  */
@@ -15,7 +16,7 @@ import java.util.Scanner;
  * @author nmukhtar
  * 
  */
-public class ProblemA {
+public class FairWarning {
 	protected String delimiter = "\\s";
 	
 	/**
@@ -23,14 +24,14 @@ public class ProblemA {
 	 */
 	public static void main(String[] args) {
     	try {
-            new ProblemA().run(args);
+            new FairWarning().run(args);
             System.exit(0);
     	} catch (Throwable t) {
     		t.printStackTrace();
     		System.exit(1);
     	}
 	}
-	
+
 	/**
 	 * @param args
 	 */
