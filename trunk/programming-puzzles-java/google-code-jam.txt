@@ -5,6 +5,7 @@ http://www.topcoder.com/tc?module=ProblemArchive
 http://www.go-hero.net/jam/09/solutions/
 http://code.google.com/codejam/archive.html
 http://stackoverflow.com/questions/90715/what-are-the-best-programming-puzzles-you-came-across
+http://projecteuler.net
 
 Write utility classes to parse input and write output.
 Create a eclipse project.
