@@ -14,6 +14,7 @@ Try to solve sample problems.
 	start with code jam
 	then icpc
 	then facebook
+	then project euler
 	then topcoder
 	
 Strategy.
