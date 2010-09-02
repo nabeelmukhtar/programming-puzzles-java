@@ -6,6 +6,11 @@ http://www.go-hero.net/jam/09/solutions/
 http://code.google.com/codejam/archive.html
 http://stackoverflow.com/questions/90715/what-are-the-best-programming-puzzles-you-came-across
 http://projecteuler.net
+http://www.pythonchallenge.com/
+http://uva.onlinejudge.org/index.php
+http://codegolf.com/
+http://www.billthelizard.com/2009/06/programming-and-logic-puzzles.html
+http://stackoverflow.com/questions/662283/websites-like-projecteuler-net
 
 Write utility classes to parse input and write output.
 Create a eclipse project.
