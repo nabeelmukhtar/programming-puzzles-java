@@ -14,6 +14,8 @@ http://stackoverflow.com/questions/662283/websites-like-projecteuler-net
 http://www.programming-challenges.com
 http://amc.maa.org/a-activities/a7-problems/problemUSAMO-IMOarchive.shtml
 
+http://www.topcoder.com/tc?d1=tutorials&d2=alg_index&module=Static
+
 Write utility classes to parse input and write output.
 Create a eclipse project.
 Revise the regular expressions.
