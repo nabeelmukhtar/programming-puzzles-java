@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.google.code.icpc.common;
+package com.google.code.acm.icpc.common;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
