@@ -1,0 +1,1 @@
+java -classpath .:./bin com.google.code.facebook.puzzle.hoppity.HoppityHop $1 $2 $3
