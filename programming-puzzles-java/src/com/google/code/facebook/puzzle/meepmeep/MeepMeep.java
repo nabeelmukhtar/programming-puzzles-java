@@ -20,6 +20,11 @@ public class MeepMeep extends BaseCommandLineClient {
 	public void process(BufferedReader input, PrintWriter output) throws Exception {
 		// TODO Auto-generated method stub
 	}
+	
+	@Override
+	protected void run(String[] args) {
+		System.out.println("Meep meep!");
+	}
 
 	/**
 	 * @param args
