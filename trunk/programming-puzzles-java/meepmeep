@@ -1,1 +1,1 @@
-java -classpath .:./bin com.google.code.facebook.puzzle.meepmeep.MeepMeep $1 $2 $3
+java -classpath .:./bin com.google.code.facebook.puzzle.meepmeep.MeepMeep $1
