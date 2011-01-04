@@ -15,12 +15,16 @@
         <delete dir="bin"/>
     </target>
     <target depends="clean" name="cleanall"/>
-    <target depends="build-project" name="build"/>
+    <target depends="build-project,build-script" name="build"/>
     <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin">
             <src path="src"/>
             <classpath refid="programming-puzzles-java.classpath"/>
         </javac>
+    </target>
+    <target depends="init" name="build-script">
+		<echo message="#!/bin/bash&#x0A;java -cp .:./bin -Xmx1024M com.google.code.facebook.puzzle.meepmeep.MeepMeep &quot;$1&quot;&#x0A;" file="meepmeep"/>
+		<!-- not necessary, but convenient -->
+		<chmod file="meepmeep" perm="a+x"/>
     </target>
 </project>
