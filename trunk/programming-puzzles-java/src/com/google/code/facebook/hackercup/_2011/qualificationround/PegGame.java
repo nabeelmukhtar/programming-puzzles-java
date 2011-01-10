@@ -6,7 +6,6 @@ package com.google.code.facebook.hackercup._2011.qualificationround;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 import com.google.code.facebook.hackercup.common.BaseCommandLineClient;
 
