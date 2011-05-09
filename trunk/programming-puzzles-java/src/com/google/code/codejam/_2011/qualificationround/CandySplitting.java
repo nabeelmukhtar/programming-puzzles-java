@@ -72,34 +72,8 @@ public class CandySplitting extends BaseCommandLineClient {
 	private int sumPatrick(int[] patricksPile) {
 		int sum = 0;
 		for (int i = 0; i < patricksPile.length; i++) {
-			String sumB = Integer.toBinaryString(sum);
-			String valueB = Integer.toBinaryString(patricksPile[i]);
-			sum = sumPatric(sumB, valueB);			
+			sum = sum ^ patricksPile[i];			
 		}
 		return sum;
-	}
-
-	private int sumPatric(String sumB, String valueB) {
-		int length = 0;
-		if (sumB.length() >= valueB.length()) {
-			int padding = sumB.length() - valueB.length();
-			for (int i = 0; i < padding; i++) {
-				valueB = "0" + valueB;
-			}
-			length = sumB.length();
-		} else {
-			int padding = valueB.length() - sumB.length();
-			for (int i = 0; i < padding; i++) {
-				sumB = "0" + sumB;
-			}
-			length = valueB.length();
-		}
-		StringBuilder builder = new StringBuilder();
-		for (int i = length - 1; i >= 0; i--) {
-			char char1 = valueB.charAt(i);
-			char char2 = sumB.charAt(i);
-			builder.insert(0, ((char1 == char2)? '0' : '1'));
-		}
-		return Integer.parseInt(builder.toString(), 2);
 	}
 }
