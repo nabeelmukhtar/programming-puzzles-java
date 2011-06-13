@@ -5,7 +5,11 @@ package com.google.code.facebook.hackercup._2011.qualificationround;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.code.facebook.hackercup.common.BaseCommandLineClient;
 
@@ -24,15 +28,27 @@ public class StudiousStudent extends BaseCommandLineClient {
 			String[] tokens = input.readLine().split(delimiter);
 			int M = Integer.parseInt(tokens[0]);
 			String[] words = Arrays.copyOfRange(tokens, 1, tokens.length);
-			Arrays.sort(words);
-			StringBuilder builder = new StringBuilder();
+			List<String> permutations = new ArrayList<String>();
+			
 			for (int j = 0; j < words.length; j++) {
-				builder.append(words[j]);
+				permutations.addAll(permute(words, j));
 			}
 			
-			output.println(builder.toString());
+			Collections.sort(permutations);
+			
+			output.println(permutations.get(0));
 		}
 		output.flush();
+	}
+
+	private List<String> permute(String[] words, int j) {
+		List<String> permutations = new ArrayList<String>();
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < words.length; i++) {
+			builder.append(words[i]);
+		}
+		
+		return permutations;
 	}
 
 	/**
