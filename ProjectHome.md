@@ -1,0 +1,1 @@
+This project is a collections of the solutions to the various programming puzzles from the archives of Google Code Jam and ACM ICPC. It also includes solutions to Facebook Engineering puzzles.
